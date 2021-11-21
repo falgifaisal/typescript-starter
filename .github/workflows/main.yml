@@ -11,7 +11,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: testing ssh connection
+    - name: Build docker image
       uses:  appleboy/ssh-action@master
       with:
         host: 54.255.230.156
@@ -19,5 +19,5 @@ jobs:
         key: ${{ secrets.MYKEY }}
         port: 22
         script: |
-          uname
-        
+          cd docker
+          sh build-image.sh
