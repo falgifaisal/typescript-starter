@@ -1,4 +1,4 @@
-name: CI
+name: Deploy
 
 # Controls when the workflow will run
 on:
@@ -6,19 +6,18 @@ on:
   push:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
+  job_one:
+    name: Deploy
+    runs-on: ubuntu:latest
     steps:
-    - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@master
+    - name: testing ssh connection
+      uses:  appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY_ED25519 }}
-        port: ${{ secrets.PORT }}
-        script: sh yourscript.sh
+        host: 54.255.230.156
+        username: ubuntu
+        key: ${{ secrets.MYKEY }}
+        port: 22
+        script: |
+          uname
+        
