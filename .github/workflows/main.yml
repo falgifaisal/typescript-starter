@@ -19,5 +19,4 @@ jobs:
         key: ${{ secrets.MYKEY }}
         port: 22
         script: |
-          cd docker
           sh build-image.sh
