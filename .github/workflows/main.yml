@@ -14,10 +14,9 @@ jobs:
     - name: Build docker image
       uses:  appleboy/ssh-action@master
       with:
-        host: 54.255.230.156
-        username: ubuntu
+        host: ${{ secrets.MYIP }}
+        username: ${{ secrets.MYUSERNAME }}
         key: ${{ secrets.MYKEY }}
         port: 22
         script: |
-          cd docker
           sh build-image.sh
