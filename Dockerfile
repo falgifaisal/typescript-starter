@@ -1,4 +1,4 @@
-# Set image from base on offical node lts alpine test
+#Set image from base on offical node lts alpine test
 ARG VERSION=lts-alpine
 FROM node:$VERSION
 
